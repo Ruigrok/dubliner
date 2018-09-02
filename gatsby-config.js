@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'The Dubliner Lagoon 420',
+    title: 'The Dubliner',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

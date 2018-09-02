@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "dubliner",
+  "description": "Listing for The Dubliner Catamaran",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Andrew Ruigrok <andrew.c.ruigrok@gmail.com>",
   "dependencies": {
     "gatsby": "next",
     "gatsby-plugin-react-helmet": "next",

@@ -5,7 +5,6 @@ import Layout from '../components/layout'
 
 const SecondPage = () => (
   <Layout>
-    <Link to="/">Return to Landing</Link>
 
     <div className="contact-container">
       <div className="contact-wrap">
@@ -79,7 +78,7 @@ const SecondPage = () => (
               <span className="txt1 p-b-20">
                 Direct Contact
             </span>
-            <span className="txt3">
+              <span className="txt3">
                 Brian
             </span>
               <span className="txt3">
@@ -90,6 +89,10 @@ const SecondPage = () => (
         </div>
       </div>
     </div>
+
+    <Link to="/">Return to Landing</Link>
+
+
   </Layout>
 )
 

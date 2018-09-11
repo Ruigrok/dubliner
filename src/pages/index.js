@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from "gatsby"
 import Img from "gatsby-image";
-// import PageTransition from 'gatsby-plugin-page-transitions';
 import { Link as Scroll } from 'react-scroll'
 
 import Layout from '../components/layout'
@@ -100,75 +99,73 @@ class IndexPage extends React.Component {
     ];
 
     return (
-      // <PageTransition>
-        <Layout location={this.props.location}>
-          <div>
-            <Img imgStyle={{ objectFit: 'cover', zIndex: -1 }} fluid={data.heroImage.fluid} />
+      <Layout location={this.props.location}>
+        <div>
+          <Img imgStyle={{ objectFit: 'cover', zIndex: -1 }} fluid={data.heroImage.fluid} />
 
-            {!activeCategory &&
-              <Scroll
-                className="scroll-down icon-arrow-left"
-                to="content"
-                data-offset="-45"
-                offset={-100}
-                spy
-                smooth
-                duration={500}
+          {!activeCategory &&
+            <Scroll
+              className="scroll-down icon-arrow-left"
+              to="content"
+              data-offset="-45"
+              offset={-100}
+              spy
+              smooth
+              duration={500}
+            >
+              <span className="hidden">Scroll Down</span>
+            </Scroll>
+          }
+        </div>
+
+        <div id="content">
+          {categories.map((category, categoryIndex) => (
+            <div key={category.name}>
+              <h2 style={{ textAlign: 'center', marginTop: '1.45rem' }}>{category.name}</h2>
+              <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+
+                {category.images.map((image, imageIndex) => (
+                  <div style={{ padding: 8, width: dimensions, height: dimensions, overflow: 'hidden' /* padding: 8, flexBasis: '25%', maxWidth: '25%' */ }} onClick={() => this.openModal(categoryIndex, imageIndex)}>
+                    <Img style={{ width: dimensions, height: dimensions }} fluid={image.node.childImageSharp.fluid} className="hover-shadow cursor" />
+                  </div>
+                ))}
+              </div>
+
+              <div className="modal"
+                style={activeCategory === categoryIndex ? { display: 'block' } : { display: 'none' }}
               >
-                <span className="hidden">Scroll Down</span>
-              </Scroll>
-            }
-          </div>
-
-          <div id="content">
-            {categories.map((category, categoryIndex) => (
-              <div key={category.name}>
-                <h2 style={{ textAlign: 'center', marginTop: '1.45rem' }}>{category.name}</h2>
-                <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+                <span className="close cursor" onClick={this.closeModal} >×</span>
+                <div className="modal-content">
 
                   {category.images.map((image, imageIndex) => (
-                    <div style={{ padding: 8, width: dimensions, height: dimensions, overflow: 'hidden' /* padding: 8, flexBasis: '25%', maxWidth: '25%' */ }} onClick={() => this.openModal(categoryIndex, imageIndex)}>
-                      <Img style={{ width: dimensions, height: dimensions }} fluid={image.node.childImageSharp.fluid} className="hover-shadow cursor" />
+                    <div className={image.node.childImageSharp.fluid.aspectRatio > 1 ? "landscapeSlide" : "portraitSlide"}
+                      style={slideIndex === imageIndex ? { display: 'block' } : { display: 'none' }}>
+                      <div className="numbertext">{`${imageIndex} / ${category.images.length}`}</div>
+                      <Img fluid={image.node.childImageSharp.fluid} />
+                    </div>
+                  ))}
+
+                  <a className="prev" onClick={() => this.prevSlide(category.images.length)}>❮</a>
+                  <a className="next" onClick={() => this.nextSlide(category.images.length)}>❯</a>
+                  <div className="caption-container">
+                    <p id="caption" ></p>
+                  </div>
+
+                  {category.images.map((image, imageIndex) => (
+                    <div style={{ float: 'left', padding: 4 }} onClick={() => this.setActiveSlide(imageIndex)}>
+                      <Img
+                        style={{ width: dimensions / 2, height: dimensions / 2 }}
+                        fluid={image.node.childImageSharp.fluid}
+                        className={slideIndex === imageIndex ? "demo cursor active" : "demo cursor"}
+                      />
                     </div>
                   ))}
                 </div>
-
-                <div className="modal"
-                  style={activeCategory === categoryIndex ? { display: 'block' } : { display: 'none' }}
-                >
-                  <span className="close cursor" onClick={this.closeModal} >×</span>
-                  <div className="modal-content">
-
-                    {category.images.map((image, imageIndex) => (
-                      <div className={image.node.childImageSharp.fluid.aspectRatio > 1 ? "landscapeSlide" : "portraitSlide"}
-                        style={slideIndex === imageIndex ? { display: 'block' } : { display: 'none' }}>
-                        <div className="numbertext">{`${imageIndex} / ${category.images.length}`}</div>
-                        <Img fluid={image.node.childImageSharp.fluid}/>
-                      </div>
-                    ))}
-
-                    <a className="prev" onClick={() => this.prevSlide(category.images.length)}>❮</a>
-                    <a className="next" onClick={() => this.nextSlide(category.images.length)}>❯</a>
-                    <div className="caption-container">
-                      <p id="caption" ></p>
-                    </div>
-
-                    {category.images.map((image, imageIndex) => (
-                      <div style={{ float: 'left', padding: 4 }} onClick={() => this.setActiveSlide(imageIndex)}>
-                        <Img
-                          style={{ width: dimensions / 2, height: dimensions / 2 }}
-                          fluid={image.node.childImageSharp.fluid}
-                          className={slideIndex === imageIndex ? "demo cursor active" : "demo cursor"}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
-            ))}
-          </div>
-        </Layout>
-      // </PageTransition>
+            </div>
+          ))}
+        </div>
+      </Layout>
     );
   }
 }

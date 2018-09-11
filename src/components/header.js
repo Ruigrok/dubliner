@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 
 const Header = ({ siteTitle, location }) => (
   <div
     style={{
       marginBottom: '1.45rem',
-      background: 'rgba(255, 255, 255, 0.5)',
-      position: 'fixed',
+      background: location.includes('contact') ? '#f2f2f2' : 'rgba(255, 255, 255, 0.5)',
+      position: location.includes('contact') ? 'absolute' : 'fixed',
       top: 0,
       width: '100%',
       zIndex: 1
@@ -15,11 +15,13 @@ const Header = ({ siteTitle, location }) => (
     <div
       style={{
         margin: '0 auto',
-        // maxWidth: 960,
         padding: '1.45rem 1.0875rem',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      <h1 style={{margin: 0}}>
         <Link
           to="/"
           style={{
@@ -29,40 +31,25 @@ const Header = ({ siteTitle, location }) => (
         >
           {siteTitle}
         </Link>
+      </h1>
 
+      <div className='btn-container'>
         {location === '/' &&
-          <Link
-            to="/contact/"
-            style={{
-              color: 'black',
-              zIndex: 500,
-              position: 'absolute',
-              top: 40,
-              right: 40
-              // textDecoration: 'none',
-            }}
+          <button
+            className='btn nav-btn'
+            onClick={() => navigate('/contact/')}
+          // style={{ position: 'absolute', top: 30, right: 30}}
           >
             Contact
-              </Link>
+            </button>
         }
 
         {location.includes('contact') &&
-          <Link
-            to="/"
-            style={{
-              color: 'black',
-              zIndex: 500,
-              position: 'absolute',
-              top: 40,
-              right: 40
-              // textDecoration: 'none',
-            }}
-          >
+          <button className='btn nav-btn' onClick={() => navigate('/')}>
             Return Home
-              </Link>
+            </button>
         }
-
-      </h1>
+      </div>
     </div>
   </div>
 )

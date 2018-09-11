@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from "gatsby"
 import Img from "gatsby-image";
-import PageTransition from 'gatsby-plugin-page-transitions';
+// import PageTransition from 'gatsby-plugin-page-transitions';
 import { Link as Scroll } from 'react-scroll'
 
 import Layout from '../components/layout'
@@ -100,7 +100,7 @@ class IndexPage extends React.Component {
     ];
 
     return (
-      <PageTransition>
+      // <PageTransition>
         <Layout location={this.props.location}>
           <div>
             <Img imgStyle={{ objectFit: 'cover', zIndex: -1 }} fluid={data.heroImage.fluid} />
@@ -110,6 +110,7 @@ class IndexPage extends React.Component {
                 className="scroll-down icon-arrow-left"
                 to="content"
                 data-offset="-45"
+                offset={-100}
                 spy
                 smooth
                 duration={500}
@@ -142,10 +143,7 @@ class IndexPage extends React.Component {
                       <div className={image.node.childImageSharp.fluid.aspectRatio > 1 ? "landscapeSlide" : "portraitSlide"}
                         style={slideIndex === imageIndex ? { display: 'block' } : { display: 'none' }}>
                         <div className="numbertext">{`${imageIndex} / ${category.images.length}`}</div>
-                        <Img
-                          fluid={image.node.childImageSharp.fluid}
-                        // sizes={{...node.image.sizes, aspectRatio: 1}}
-                        />
+                        <Img fluid={image.node.childImageSharp.fluid}/>
                       </div>
                     ))}
 
@@ -170,7 +168,7 @@ class IndexPage extends React.Component {
             ))}
           </div>
         </Layout>
-      </PageTransition>
+      // </PageTransition>
     );
   }
 }

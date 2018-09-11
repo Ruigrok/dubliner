@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import PageTransition from 'gatsby-plugin-page-transitions';
+// import { Link } from 'gatsby'
+// import PageTransition from 'gatsby-plugin-page-transitions';
 
 import Layout from '../components/layout'
 
 const SecondPage = (props) => (
-  <PageTransition>
+  // <PageTransition>
     <Layout location={props.location}>
       <div className="contact-container">
         <div className="contact-wrap">
@@ -37,7 +37,7 @@ const SecondPage = (props) => (
               <textarea id="message" className="input" name="message" placeholder="Write us a message" defaultValue={""} />
               <span className="input-focus" />
             </div>
-            <div className="contact-btn-container">
+            <div className="btn-container">
               <button className="contact-btn">
                 Send Message
               </button>
@@ -91,7 +91,7 @@ const SecondPage = (props) => (
         </div>
       </div>
     </Layout>
-  </PageTransition>
+  // </PageTransition>
 )
 
 export default SecondPage

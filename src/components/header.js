@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, location }) => (
   <div
     style={{
       marginBottom: '1.45rem',
       background: 'rgba(255, 255, 255, 0.5)',
-      position: 'absolute',
+      position: 'fixed',
       top: 0,
-      width: '100%'
+      width: '100%',
+      zIndex: 1
     }}
   >
     <div
@@ -28,19 +29,39 @@ const Header = ({ siteTitle }) => (
         >
           {siteTitle}
         </Link>
-        <Link
-          to="/contact"
-          style={{
-            color: 'black',
-            zIndex: 500,
-            position: 'absolute',
-            top: 40,
-            right: 40
-            // textDecoration: 'none',
-          }}
-        >
-          Contact
-        </Link>
+
+        {location === '/' &&
+          <Link
+            to="/contact/"
+            style={{
+              color: 'black',
+              zIndex: 500,
+              position: 'absolute',
+              top: 40,
+              right: 40
+              // textDecoration: 'none',
+            }}
+          >
+            Contact
+              </Link>
+        }
+
+        {location.includes('contact') &&
+          <Link
+            to="/"
+            style={{
+              color: 'black',
+              zIndex: 500,
+              position: 'absolute',
+              top: 40,
+              right: 40
+              // textDecoration: 'none',
+            }}
+          >
+            Return Home
+              </Link>
+        }
+
       </h1>
     </div>
   </div>

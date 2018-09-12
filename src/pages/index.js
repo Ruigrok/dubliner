@@ -1,9 +1,9 @@
-import React from 'react'
-import { graphql, navigate, Link } from "gatsby"
-import Img from "gatsby-image";
-import { Link as Scroll } from 'react-scroll'
+import React from 'react';
+import { graphql, navigate, Link } from 'gatsby';
+import Img from 'gatsby-image';
+import { Link as Scroll } from 'react-scroll';
 
-import Layout from '../components/layout'
+import Layout from '../components/layout';
 
 
 class IndexPage extends React.Component {
@@ -212,9 +212,7 @@ class IndexPage extends React.Component {
   }
 }
 
-
-
-export default IndexPage
+export default IndexPage;
 
 
 export const query = graphql`
@@ -294,23 +292,3 @@ query {
 
 }
 `
-
-/* export const query = graphql`
-query {
-          heroImages: imageSharp(fluid: {originalName: {regex: "/test/" } }) {
-          id
-    fluid(quality: 100) {
-          base64
-      tracedSVG
-        aspectRatio
-        src
-        srcSet
-        srcWebp
-        srcSetWebp
-        sizes
-        originalImg
-        originalName
-      }
-    }
-  }
-` */

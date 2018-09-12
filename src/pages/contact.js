@@ -1,10 +1,51 @@
 import React from 'react'
+import { navigate, Link } from "gatsby"
 
 import Layout from '../components/layout'
 
-const SecondPage = (props) => (
-  <Layout location={props.location}>
-    <div className="contact-container" style={{marginTop: 87}}>
+const ContactPage = () => (
+  <Layout /* location={props.location} */>
+
+    <div
+      style={{
+        marginBottom: '1.45rem',
+        background: '#f2f2f2',
+        position: 'absolute',
+        top: 0,
+        width: '100%',
+        zIndex: 1
+      }}
+    >
+      <div
+        style={{
+          margin: '0 auto',
+          padding: '1.45rem 1.0875rem',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between'
+        }}
+      >
+        <h1 style={{ margin: 0 }}>
+          <Link
+            to="/"
+            style={{
+              color: 'black',
+              textDecoration: 'none',
+            }}
+          >
+            Lagoon 420
+          </Link>
+        </h1>
+
+        <div className='btn-container'>
+          <button className='btn nav-btn' onClick={() => navigate('/')}>
+            Return Home
+            </button>
+        </div>
+      </div>
+    </div>
+
+    <div className="contact-container" style={{ marginTop: 87 }}>
       <div className="contact-wrap">
         <form className="contact-form">
           <span className="contact-title">
@@ -90,4 +131,4 @@ const SecondPage = (props) => (
   </Layout>
 )
 
-export default SecondPage
+export default ContactPage

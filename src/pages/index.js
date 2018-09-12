@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from "gatsby"
+import { graphql, navigate, Link } from "gatsby"
 import Img from "gatsby-image";
 import { Link as Scroll } from 'react-scroll'
 
@@ -99,7 +99,49 @@ class IndexPage extends React.Component {
     ];
 
     return (
-      <Layout location={this.props.location}>
+      <Layout /* location={this.props.location} */>
+        <div
+          style={{
+            marginBottom: '1.45rem',
+            background: 'rgba(255, 255, 255, 0.5)',
+            position: 'fixed',
+            top: 0,
+            width: '100%',
+            zIndex: 1
+          }}
+        >
+          <div
+            style={{
+              margin: '0 auto',
+              padding: '1.45rem 1.0875rem',
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between'
+            }}
+          >
+            <h1 style={{ margin: 0 }}>
+              <Link
+                to="/"
+                style={{
+                  color: 'black',
+                  textDecoration: 'none',
+                }}
+              >
+                Lagoon 420
+              </Link>
+            </h1>
+
+            <div className='btn-container'>
+              <button
+                className='btn nav-btn'
+                onClick={() => navigate('/contact/')}
+              >
+                Contact
+            </button>
+            </div>
+          </div>
+        </div>
+
         <div>
           <Img imgStyle={{ objectFit: 'cover', zIndex: -1 }} fluid={data.heroImage.fluid} />
 
@@ -108,7 +150,7 @@ class IndexPage extends React.Component {
               className="scroll-down icon-arrow-left"
               to="content"
               data-offset="-45"
-              offset={-100}
+              offset={-126}
               spy
               smooth
               duration={500}

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link, navigate } from 'gatsby'
 
-const Header = ({ siteTitle, location }) => (
+const Header = ({ siteTitle, path }) => (
   <div
     style={{
       marginBottom: '1.45rem',
-      background: location.includes('contact') ? '#f2f2f2' : 'rgba(255, 255, 255, 0.5)',
-      position: location.includes('contact') ? 'absolute' : 'fixed',
+      background: path.includes('contact') ? '#f2f2f2' : 'rgba(255, 255, 255, 0.5)',
+      position: path.includes('contact') ? 'absolute' : 'fixed',
       top: 0,
       width: '100%',
       zIndex: 1
@@ -33,23 +33,24 @@ const Header = ({ siteTitle, location }) => (
         </Link>
       </h1>
 
-      <div className='btn-container'>
-        {location === '/' &&
+       <div className='btn-container'>
+        {path === '/' &&
           <button
             className='btn nav-btn'
             onClick={() => navigate('/contact/')}
-          // style={{ position: 'absolute', top: 30, right: 30}}
           >
             Contact
             </button>
-        }
+        } 
 
-        {location.includes('contact') &&
+        {path.includes('contact') &&
           <button className='btn nav-btn' onClick={() => navigate('/')}>
             Return Home
             </button>
         }
+        
       </div>
+      
     </div>
   </div>
 )

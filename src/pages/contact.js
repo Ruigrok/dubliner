@@ -12,7 +12,9 @@ function encode(data) {
 class ContactPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      modalOpen: false
+    };
   }
 
   handleChange = e => {
@@ -30,11 +32,22 @@ class ContactPage extends React.Component {
         ...this.state
       })
     })
-      .then(() => navigate(form.getAttribute("action")))
+      .then(() => {
+        this.setState({ modalOpen: true });
+        setTimeout(() => {
+          this.returnHome();
+        }, 4000);
+      })
       .catch(error => alert(error));
   };
 
+  returnHome() {
+    this.setState({ modalOpen: false });
+    navigate('/');
+  }
+
   render() {
+    const { modalOpen } = this.state;
 
     return (
       <Layout /* location={props.location} */>
@@ -126,7 +139,7 @@ class ContactPage extends React.Component {
                 <input
                   id="email"
                   className="input"
-                  type="type"
+                  type="email"
                   name="email"
                   placeholder="Eg. example@email.com"
                 />
@@ -177,7 +190,7 @@ class ContactPage extends React.Component {
               </span>
                 </div>
               </div>
-              <div className="dis-flex size1 p-b-47">
+{/*               <div className="dis-flex size1 p-b-47">
                 <div className="txt1 p-r-25">
                   <span className="lnr lnr-phone-handset" />
                 </div>
@@ -189,7 +202,7 @@ class ContactPage extends React.Component {
                     +1 800 1236879
               </span>
                 </div>
-              </div>
+              </div> */}
               <div className="dis-flex size1 p-b-47">
                 <div className="txt1 p-r-25">
                   <span className="lnr lnr-envelope" />
@@ -209,6 +222,25 @@ class ContactPage extends React.Component {
             </div>
           </div>
         </div>
+
+        {modalOpen &&
+          <div className="md-modal md-effect-1 md-show" id="modal-1">
+            <div className="md-content">
+              <h3>Success!</h3>
+              <div>
+                <p>We've received your message and will follow up with you shortly.</p>
+                <svg className='checkmark' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'>
+                  <circle className='checkmark__circle' cx='26' cy='26' r='25' fill='none'
+                  />
+                  <path className='checkmark__check' fill='none' d='M14.1 27.2l7.1 7.2 16.7-16.8'
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        }
+
+        <div class="md-overlay"></div>
       </Layout>
     );
   }

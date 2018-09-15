@@ -1345,6 +1345,32 @@ textarea.input {
   animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) .8s forwards;
 }
 
+/* ========= INFO TABLES ==============  */
+
+.info-table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.info-table td, .info-table th {
+  border: 1px solid #ddd;
+  /* padding: 8px; */
+  text-align: center;
+  padding: 4px;
+}
+
+.info-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.info-table tr:hover {background-color: #ddd;}
+
+.info-table th {
+  padding: 4px;
+  /* background-color: #4CAF50; */
+  background-color: #00ad5f;
+  color: white;
+}
+
 @keyframes stroke {
   100% {
     stroke-dashoffset: 0;

@@ -142,6 +142,7 @@ class ContactPage extends React.Component {
                   type="text"
                   name="email"
                   placeholder="Eg. example@email.com"
+                  onChange={this.handleChange}
                 />
                 <span className="input-focus" />
               </div>

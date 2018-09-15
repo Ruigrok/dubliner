@@ -139,7 +139,7 @@ class ContactPage extends React.Component {
                 <input
                   id="email"
                   className="input"
-                  type="email"
+                  type="text"
                   name="email"
                   placeholder="Eg. example@email.com"
                 />

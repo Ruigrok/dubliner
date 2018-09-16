@@ -187,7 +187,7 @@ class ContactPage extends React.Component {
                     Current Location
               </span>
                   <span className="txt2">
-                    The Grenadines
+                    Grenada
               </span>
                 </div>
               </div>

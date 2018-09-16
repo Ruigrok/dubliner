@@ -100,7 +100,7 @@ class IndexPage extends React.Component {
         images: data.exteriorImages.edges
       },
       {
-        name: 'Kitchen/Dining',
+        name: 'Galley/Cabin',
         images: data.kitchenImages.edges
       },
       {
@@ -121,7 +121,7 @@ class IndexPage extends React.Component {
       },
       {
         header: 'Location',
-        data: 'Grenadines'
+        data: 'Grenada'
       },
       {
         header: 'Price',
@@ -269,11 +269,7 @@ class IndexPage extends React.Component {
             </div>
           </div>
 
-
-
-
           <div style={{ margin: 10 }}>
-
             {tableLength === 6 &&
               <React.Fragment>
                 <table className='info-table'>
